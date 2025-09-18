@@ -30,3 +30,52 @@ pups_df =
 select(litters_df, group, litter_number, gd0_weight)
 ```
 
+select a range
+
+```{r}
+select(litters_df, group:gd_of_birth)
+```
+
+select by removal
+
+```{r}
+select(litters_df, -group)
+select(litters_df, -group:gd_of_birth)
+```
+
+select by prefix
+
+```{r}
+select(litters_df, group, starts_with("gd"))
+```
+
+rearrange by selecting
+
+```{r}
+select(litters_df, starts_with("gd"), group)
+select(litters_df, litter_number, everything())
+
+relocate(litters_df, litter_number) #does the same thing
+```
+
+rename by selecting
+
+```{r}
+select(litters_df, GROUP = group, everything())
+rename(litters_df, GROUP = group) #does same thing
+```
+
+what if i only select one variables?
+
+```{r}
+select(litters_df, group) #produces df
+
+pull(litters_df, group) #produces a vector (almost never use)
+```
+
+select litter number, sex, PD ears from pups dataset
+
+```{r}
+select(pups_df, litter_number, sex, pd_ears)
+```
+
